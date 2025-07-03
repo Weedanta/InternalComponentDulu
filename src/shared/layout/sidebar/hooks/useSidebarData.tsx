@@ -1,4 +1,4 @@
-import { MenuItem } from '../types';
+import { useMemo } from 'react';
 import { 
   LayoutDashboard, 
   Users, 
@@ -8,8 +8,11 @@ import {
   Coffee 
 } from 'lucide-react';
 
+// Pastikan types diimport dengan benar
+import type { MenuItem } from '../types/sidebar.types';
+
 export const useSidebarData = () => {
-  const menuItems: MenuItem[] = [
+  const menuItems: MenuItem[] = useMemo(() => [
     {
       id: 'dashboard',
       label: 'Dashboard',
@@ -48,7 +51,19 @@ export const useSidebarData = () => {
       icon: <Coffee size={20} />,
       href: '/konsumsi'
     }
-  ];
+  ], []);
 
-  return { menuItems };
+  const getMenuItemById = (id: string): MenuItem | undefined => {
+    return menuItems.find(item => item.id === id);
+  };
+
+  const getMenuItemByHref = (href: string): MenuItem | undefined => {
+    return menuItems.find(item => item.href === href);
+  };
+
+  return {
+    menuItems,
+    getMenuItemById,
+    getMenuItemByHref
+  };
 };

@@ -1,4 +1,5 @@
 import Header from "@/shared/layout/header/header";
+import { SidebarContainer, useSidebar } from '@/shared/layout/sidebar';
 
 
 export default function ContactLayout({
@@ -9,6 +10,11 @@ export default function ContactLayout({
   return (
     <>
       <Header/>
+      <SidebarContainer 
+        defaultCollapsed={false}
+        defaultActiveMenu="dashboard"
+        className="min-h-screen"
+      />
       {children}
       
     </>

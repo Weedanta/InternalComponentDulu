@@ -3,7 +3,7 @@ import header from '@/shared/layout/header/header'
 
 const page = () => {
   return (
-    <div>
+    <div className='h-screen'>
       
     </div>
   )
